@@ -1,11 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: `lsvdr.pw`,
-    author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
-    },
-    description: `tech`,
+    description: `lsvdr.pw tech`,
+    author: `Eliseu Videira`,
     siteUrl: `https://lsvdr.pw/`,
   },
   plugins: [
@@ -109,13 +106,25 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `lsvdr.pw tech`,
+        short_name: `lsvdr.pw`,
         start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#663399`,
+        background_color: `#01579B`,
+        theme_color: `#E1F5FE`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/icon.png`,
+        icons: [
+          {
+            src: "src/images/android-chrome-192x192.png",
+            sizes: "192x192",
+            type: "image/png",
+          },
+          {
+            src: "src/images/android-chrome-512x512.png",
+            sizes: "512x512",
+            type: "image/png",
+          },
+        ],
       },
     },
     `gatsby-plugin-react-helmet`,
