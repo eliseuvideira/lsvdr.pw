@@ -1,0 +1,41 @@
+#!/usr/bin/env node
+const { program } = require("commander");
+const fse = require("fs-extra");
+const path = require("path");
+const PrettyError = require("pretty-error");
+
+const template = `
+---
+title: Title
+date: ${new Date().toISOString()}
+description: Description
+---
+New Post
+`;
+
+const prettyError = (err) => {
+  console.log();
+  console.log(
+    new PrettyError()
+      .appendStyle({ "pretty-error": { marginLeft: 0 } })
+      .skip(() => true)
+      .render(err),
+  );
+};
+
+program
+  .arguments("<blog-post-name>")
+  .action((name) => {
+    if (!/^[a-z][-a-z]{4,}[a-z]$/.test(name)) {
+      prettyError(`invalid blog post name ${name} (6+ characters a-z and -)`);
+    }
+
+    const folder = path.join(__dirname, "content", "blog", name);
+    if (fse.existsSync(folder)) {
+      prettyError(`blog post "${name}" already exists`);
+    }
+
+    fse.mkdirSync(folder);
+    fse.writeFileSync(path.join(folder, "index.md"), template.trim() + "\n");
+  })
+  .parse(process.argv);
