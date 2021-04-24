@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Link } from "gatsby";
-import { normalize } from "styled-normalize";
-import { Helmet } from "react-helmet";
+import { Normalize } from "styled-normalize";
 
 const Layout: React.FC<any> = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`;
@@ -24,7 +23,7 @@ const Layout: React.FC<any> = ({ location, title, children }) => {
 
   return (
     <>
-      <Helmet style={normalize} />
+      <Normalize />
       <div className="global-wrapper" data-is-root-path={isRootPath}>
         <header className="global-header">{header}</header>
         <main>{children}</main>
