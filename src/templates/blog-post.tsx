@@ -22,14 +22,17 @@ const BlogPostTemplate: React.FC<any> = ({ data, location }) => {
       >
         <header>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.date}</p>
+          <p>
+            {post.frontmatter.date}
+            <span>・{post.timeToRead} min read</span>
+          </p>
         </header>
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
         />
         <hr />
-        <footer>footer</footer>
+        <footer></footer>
       </article>
       <nav className="blog-post-nav">
         <ul
@@ -76,6 +79,7 @@ export const pageQuery = graphql`
     }
     markdownRemark(id: { eq: $id }) {
       id
+      timeToRead
       excerpt(pruneLength: 160)
       html
       frontmatter {

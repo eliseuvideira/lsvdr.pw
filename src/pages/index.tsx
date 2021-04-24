@@ -41,7 +41,9 @@ const BlogIndex: React.FC<any> = ({ data, location }) => {
                       <span itemProp="headline">{title}</span>
                     </Link>
                   </h2>
-                  <small>{post.frontmatter.date}</small>
+                  <small>
+                    {post.frontmatter.date}・{post.timeToRead} min read
+                  </small>
                 </header>
                 <section>
                   <p
@@ -71,6 +73,7 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
       nodes {
+        timeToRead
         excerpt
         fields {
           slug
