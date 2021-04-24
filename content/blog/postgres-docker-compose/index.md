@@ -11,7 +11,7 @@ description: Deploy a production ready postgres database using docker-compose
 
 ## How to do it
 
-### Create a new folder
+Create a new folder to store the config files
 
 ```shell
 mkdir postgresdb
@@ -19,25 +19,27 @@ cd postgresdb
 touch .env docker-compose.yml
 ```
 
-##### .env file
+The .env file should contain the following variables
 
 `embed:example.env`
 
-##### docker-compose.yml file
+Paste this content into docker-compose.yml
 
 `embed:docker-compose.yml`
 
-### Run docker-compose
+Try running docker-compose
 
 ```shell
 docker-compose up -d
 ```
 
-### Test your database
+Test a database connection
 
 ```shell
 docker-compose exec postgres psql -U <user> -p <port> -d <db>
 ```
+
+Run queries
 
 ```sql
 select * from pg_database;
