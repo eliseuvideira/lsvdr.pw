@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link, graphql } from "gatsby";
-import { Disqus } from "gatsby-plugin-disqus";
+import { Disqus, CommentCount } from "gatsby-plugin-disqus";
 
 import Layout from "../components/Layout";
 import Seo from "../components/Seo";
@@ -10,6 +10,12 @@ const BlogPostTemplate: React.FC<any> = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
   const siteUrl = data.site.siteMetadata.siteUrl;
   const { previous, next } = data;
+
+  const disqusConfig = {
+    url: siteUrl + post.fields.slug,
+    identifier: post.fields.slug,
+    title: post.frontmatter.title,
+  };
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -28,6 +34,7 @@ const BlogPostTemplate: React.FC<any> = ({ data, location }) => {
             {post.frontmatter.date}
             <span>・{post.timeToRead} min read</span>
           </p>
+          <CommentCount config={disqusConfig} placeholder="0 Comments" />
         </header>
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
@@ -35,13 +42,7 @@ const BlogPostTemplate: React.FC<any> = ({ data, location }) => {
         />
         <hr />
         <footer>
-          <Disqus
-            config={{
-              url: siteUrl + post.fields.slug,
-              identifier: post.fields.slug,
-              title: post.frontmatter.title,
-            }}
-          />
+          <Disqus config={disqusConfig} />
         </footer>
       </article>
       <nav className="blog-post-nav">
