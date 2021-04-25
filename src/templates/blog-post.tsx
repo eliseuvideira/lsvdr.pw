@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Link, graphql } from "gatsby";
+import { Disqus } from "gatsby-plugin-disqus";
 
 import Layout from "../components/Layout";
 import Seo from "../components/Seo";
@@ -7,6 +8,7 @@ import Seo from "../components/Seo";
 const BlogPostTemplate: React.FC<any> = ({ data, location }) => {
   const post = data.markdownRemark;
   const siteTitle = data.site.siteMetadata?.title || `Title`;
+  const siteUrl = data.site.siteMetadata.siteUrl;
   const { previous, next } = data;
 
   return (
@@ -32,7 +34,15 @@ const BlogPostTemplate: React.FC<any> = ({ data, location }) => {
           itemProp="articleBody"
         />
         <hr />
-        <footer></footer>
+        <footer>
+          <Disqus
+            config={{
+              url: siteUrl + post.fields.slug,
+              identifier: post.fields.slug,
+              title: post.frontmatter.title,
+            }}
+          />
+        </footer>
       </article>
       <nav className="blog-post-nav">
         <ul
@@ -75,6 +85,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        siteUrl
       }
     }
     markdownRemark(id: { eq: $id }) {
@@ -82,6 +93,9 @@ export const pageQuery = graphql`
       timeToRead
       excerpt(pruneLength: 160)
       html
+      fields {
+        slug
+      }
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
