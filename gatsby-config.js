@@ -1,3 +1,7 @@
+const dotenv = require("dotenv-safe");
+
+dotenv.config();
+
 module.exports = {
   siteMetadata: {
     title: `lsvdr.pw`,
@@ -123,6 +127,15 @@ module.exports = {
       resolve: `gatsby-plugin-disqus`,
       options: {
         shortname: `lsvdr`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
+        head: true,
+        anonymize: true,
+        respectDNT: true,
       },
     },
   ],

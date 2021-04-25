@@ -4706,6 +4706,13 @@ dot-prop@^5.2.0:
   dependencies:
     is-obj "^2.0.0"
 
+dotenv-safe@^8.2.0:
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/dotenv-safe/-/dotenv-safe-8.2.0.tgz#8d548c7318a62c09a66c4dc8c31864cc007c78ba"
+  integrity sha512-uWwWWdUQkSs5a3mySDB22UtNwyEYi0JtEQu+vDzIqr9OjbDdC2Ip13PnSpi/fctqlYmzkxCeabiyCAOROuAIaA==
+  dependencies:
+    dotenv "^8.2.0"
+
 dotenv@^8.2.0:
   version "8.2.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
@@ -6020,6 +6027,14 @@ gatsby-plugin-feed@^3.2.0:
     gatsby-plugin-utils "^1.2.0"
     lodash.merge "^4.6.2"
     rss "^1.2.2"
+
+gatsby-plugin-google-analytics@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-analytics/-/gatsby-plugin-google-analytics-3.3.0.tgz#dffec74c7371f3312144e8616da0ba471e57e871"
+  integrity sha512-p6++DY9fJ8Exh2YpPdaL17mtvcd1uPGfIJPf6683CJtlzfqGRbN97ue2BKl/RfsBpXuK01hIXOiY/sOgDaE9vg==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    minimatch "3.0.4"
 
 gatsby-plugin-image@^1.2.1:
   version "1.2.1"
