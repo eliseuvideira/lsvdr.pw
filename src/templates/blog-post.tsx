@@ -33,6 +33,17 @@ const BlogPostTemplate: React.FC<any> = ({ data, location }) => {
           <p>
             {post.frontmatter.date}
             <span>・{post.timeToRead} min read</span>
+            <span>
+              ・{" "}
+              <a
+                href={`https://github.com/eliseuvideira/lsvdr.pw/tree/main/content/blog/${post.fields.slug}/index.md`}
+                target="_blank"
+                rel="noopener"
+                style={{ color: "inherit" }}
+              >
+                Edit
+              </a>
+            </span>
           </p>
           <CommentCount config={disqusConfig} placeholder="0 Comments" />
         </header>
